@@ -30,3 +30,23 @@ print(f"hotter days: {temperature(hot)}")
 
 #stackli değil arrayli bir çözüm ve bunu henüz githuba pushlamadım... 
         
+def daily_temperatures(temps):
+    n = len(temps)
+    result = [0] * n
+    stack = []  # İndeksleri tutar
+    
+    for i in range(n):
+        # 1. Stack'teki daha soğuk günleri kontrol et
+        while stack and temps[stack[-1]] < temps[i]:
+            # 2. O günü stack'ten çıkar
+            prev = stack.pop()
+            # 3. Kaç gün sonra olduğunu hesapla
+            result[prev] = i - prev
+        
+        # 4. Bugünü stack'e ekle (ileride hatırlamak için)
+        stack.append(i)
+    
+    return result
+
+hot = [73, 74, 75, 71, 69, 72, 76, 73]
+print(f"hotter days: {daily_temperatures(hot)}")
