@@ -20,3 +20,19 @@ def reverse_string_simple(s):
 
 isim = "baltalı"
 print(f"name reverse:{reverse_string_simple(isim)}")
+
+def sayilari_ters_cevir(sayilar):
+    stack = []
+    sonuc = []
+    
+    # Bu kısmı while ile yaz
+    for sayi in sayilar:
+        stack.append(sayi)
+    
+    while stack:
+        sonuc.append(stack.pop())
+    
+    return sonuc
+
+# Test
+print(sayilari_ters_cevir([1, 2, 3, 4, 5]))  # [5, 4, 3, 2, 1]
